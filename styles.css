@@ -93,16 +93,24 @@ button:disabled {
 .modal-content {
   background-color: white;
   margin: 15% auto;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #888;
   width: 80%;
   max-width: 600px;
+  position: relative;
 }
 
 .close {
   color: #aaa;
   float: right;
   font-size: 28px;
+}
+
+.loading-msg {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+  display: none;
 }
 
 .close:hover,
