@@ -79,7 +79,7 @@ confirmBtn.onclick = () => {
   params.append("details", form.details.value);
   if (base64Image) params.append("photo", base64Image);
 
-  fetch("YOUR_GAS_WEB_APP_URL", {
+  fetch("https://script.google.com/macros/s/AKfycbw2JTesE0pHAn0vx-wpOGVhvOUZxkfyegFfN1HtavDwY19sDAdtzu9lzGwFoSJWACzeeQ/exec", {
     method: "POST",
     body: params
   })
