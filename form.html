@@ -27,11 +27,16 @@
         <label>詳細:</label>
         <textarea name="details" rows="4" required></textarea>
       </div>
-      <div class="form-group">
-        <label>写真:</label>
-        <input type="file" id="photo" accept="image/*">
-        <div id="photoPreview"></div>
-      </div>
+<div class="form-group">
+  <label for="photo">写真（省略可）:</label>
+  <div class="file-group">
+    <label for="photo" class="custom-file-label">ファイルを選択</label>
+    <input type="file" id="photo" name="photo" accept="image/*" style="display: none;">
+    <span class="file-name" id="fileName">ファイル未選択</span>
+  </div>
+  <div id="photoPreview"></div>
+</div>
+
       <div class="button-group">
         <button type="submit">確認画面へ</button>
       </div>
