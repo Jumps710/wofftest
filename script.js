@@ -83,15 +83,19 @@ confirmBtn.onclick = () => {
     method: "POST",
     body: params
   })
-    .then(res => res.text())
-    .then(res => {
-      confirmBtn.disabled = false;
-      processingMessage.style.display = "none";
-      window.location.href = res.includes("完了") ? "result.html" : "error.html";
-    })
-    .catch(err => {
-      confirmBtn.disabled = false;
-      processingMessage.style.display = "none";
-      alert("送信中にエラーが発生しました。");
-    });
-};
+  .then(res => res.json())
+  .then(json => {
+    confirmBtn.disabled = false;
+    processingMessage.style.display = "none";
+    if (json.status === "success") {
+      window.location.href = "result.html";
+    } else {
+      alert("送信に失敗しました。");
+    }
+  })
+  .catch(err => {
+    confirmBtn.disabled = false;
+    processingMessage.style.display = "none";
+    alert("送信中にエラーが発生しました。");
+    console.error(err);
+  });
