@@ -5,8 +5,12 @@ let base64Image = "";
 
 window.onload = async () => {
   try {
-    await woff.init({ woffId: "8Fo2NCnUsmTkXxVSzJ5CNQ" });
-    const profile = await woff.getProfile();
+console.log("初期化開始");
+await woff.init({ woffId: "8Fo2NCnUsmTkXxVSzJ5CNQ" });
+console.log("init 成功");
+const profile = await woff.getProfile();
+console.log("profile:", profile);
+
     if (!profile) throw new Error("no profile");
     displayName = profile.displayName;
     userId = profile.userId;
