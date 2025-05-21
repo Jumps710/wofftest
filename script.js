@@ -3,22 +3,38 @@ let displayName = "";
 let userId = "";
 let base64Image = "";
 
-window.onload = async () => {
-  try {
-console.log("初期化開始");
-await woff.init({ woffId: "8Fo2NCnUsmTkXxVSzJ5CNQ" });
-console.log("init 成功");
-const profile = await woff.getProfile();
-console.log("profile:", profile);
+document.addEventListener("DOMContentLoaded", function () {
+  const reporterInput = document.getElementById("reporter");
 
-    if (!profile) throw new Error("no profile");
-    displayName = profile.displayName;
-    userId = profile.userId;
-    document.getElementById("reporter").value = displayName;
-  } catch (e) {
-    alert("WOFFの初期化に失敗しました。");
-  }
-};
+  // WOFF初期化
+  woff
+    .init({ woffId: "8Fo2NCnUsmTkXxVSzJ5CNQ" })
+    .then(() => {
+      console.log("✅ WOFF初期化成功");
+
+      if (!woff.isInClient()) {
+        alert("このアプリはLINE WORKSアプリ内でのみ使用できます。");
+        return;
+      }
+
+      return woff.getProfile();
+    })
+    .then((profile) => {
+      if (profile) {
+        console.log("👤 ユーザー情報取得:", profile);
+        displayName = profile.displayName;
+        userId = profile.userId;
+        if (reporterInput) reporterInput.value = displayName;
+      } else {
+        console.warn("⚠ プロフィール取得に失敗");
+      }
+    })
+    .catch((err) => {
+      console.error("❌ WOFF初期化エラー:", err.code, err.message);
+      alert("WOFFの初期化に失敗しました。");
+    });
+});
+
 
 const photoInput = document.getElementById("photo");
 const photoPreview = document.getElementById("photoPreview");
