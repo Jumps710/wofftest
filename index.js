@@ -1,5 +1,5 @@
 // WOFF ID
-const woffId = process.env.WOFF_ID;
+const woffId = "DoyhUDdL_7Ies0Dv4USVHA";
 
 /**
 * Alert the user if WOFF is opened in an external browser and unavailable buttons are tapped
