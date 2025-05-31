@@ -71,20 +71,35 @@
       // 💬 Flexメッセージ送信
       sendBtn.addEventListener("click", async () => {
 const flexMessage = {
-  type: "bubble",
-  body: {
-    type: "box",
-    layout: "vertical",
-    contents: [
-      {
-        type: "text",
-        text: "こんにちは！",
-        weight: "bold",
-        size: "lg"
-      }
-    ]
+  type: "flex",  // 🔴 ←これが必須！
+  altText: "WOFF Flexメッセージ",
+  contents: {
+    type: "bubble",
+    body: {
+      type: "box",
+      layout: "vertical",
+      contents: [
+        {
+          type: "text",
+          text: "こんにちは！",
+          weight: "bold",
+          size: "lg"
+        }
+      ]
+    }
   }
 };
+
+woff.sendFlexMessage({ content: flexMessage })
+  .then(() => {
+    console.log("✅ メッセージ送信成功");
+    alert("送信できました！");
+  })
+  .catch(err => {
+    console.error("❌ メッセージ送信失敗:", err);
+    alert("送信失敗: " + JSON.stringify(err));
+  });
+
 
         try {
           const result = await woff.sendFlexMessage({
