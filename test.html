@@ -69,12 +69,10 @@
       });
 
       // 💬 Flexメッセージ送信
-      sendBtn.addEventListener("click", async () => {
-
-woff.sendFlexMessage({
-  content: {
+sendBtn.addEventListener("click", async () => {
+  const flexMessage = {
     type: "flex",
-    altText: "Sample Image Notification",
+    altText: "Image from WOFF app",
     contents: {
       type: "bubble",
       hero: {
@@ -105,23 +103,19 @@ woff.sendFlexMessage({
         ]
       }
     }
+  };
+
+  try {
+    const result = await woff.sendFlexMessage({
+      content: flexMessage
+    });
+    console.log("✅ メッセージ送信成功:", result);
+    alert("✅ メッセージ送信に成功しました！");
+  } catch (err) {
+    console.error("❌ メッセージ送信失敗:", err);
+    alert("❌ メッセージ送信に失敗しました。詳細はvConsoleを確認してください。");
   }
 });
-
-
-
-
-        try {
-          const result = await woff.sendFlexMessage({
-            content: flexMessage
-          });
-          console.log("✅ メッセージ送信成功:", result);
-          alert("✅ メッセージ送信に成功しました！");
-        } catch (err) {
-          console.error("❌ メッセージ送信失敗:", err);
-          alert("❌ メッセージ送信に失敗しました。詳細はvConsoleを確認してください。");
-        }
-      });
     });
   </script>
 </body>
