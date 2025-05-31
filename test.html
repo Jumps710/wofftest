@@ -71,7 +71,7 @@
       // 💬 Flexメッセージ送信
 sendBtn.addEventListener("click", async () => {
   try {
-    const result = await woff.sendTextMessage({
+    const result = await woff.sendMessage({
       text: "こんにちは！これはシンプルなテキストメッセージです。"
     });
     console.log("✅ テキストメッセージ送信成功:", result);
