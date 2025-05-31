@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>WOFF テストアプリ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script charset="utf-8" src="https://static.worksmobile.net/static/wm/woff/edge/3.7.1/sdk.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2em;
+    }
+    button {
+      padding: 1em 2em;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      background-color: #00C300;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>WOFF Flexメッセージ送信テスト</h1>
+  <button id="sendMessage">メッセージを送信する</button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const sendBtn = document.getElementById("sendMessage");
+
+      woff.init({ woffId: "YOUR_WOFF_ID_HERE" })  // ←あなたのWOFF IDに差し替えてください
+        .then(() => {
+          console.log("✅ WOFF初期化成功");
+
+          sendBtn.addEventListener("click", () => {
+            const flexMessage = {
+              "type": "bubble",
+              "hero": {
+                "type": "image",
+                "url": "https://play-lh.googleusercontent.com/02YgCuVXoYH-wAjaU9Jwlqi75UfljEU4sE1BQrAPVpcHbfSxi86K7YRFfvmJ2ytvqmQ4",
+                "size": "full",
+                "aspectRatio": "20:13",
+                "aspectMode": "cover"
+              },
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "WOFFテストメッセージ",
+                    "weight": "bold",
+                    "size": "lg",
+                    "wrap": true
+                  },
+                  {
+                    "type": "text",
+                    "text": "Flexメッセージを送信しました！",
+                    "size": "md",
+                    "wrap": true,
+                    "margin": "md"
+                  }
+                ]
+              }
+            };
+
+            woff.sendFlexMessage({ content: flexMessage })
+              .then(() => {
+                alert("✅ メッセージを送信しました");
+              })
+              .catch((err) => {
+                console.error("❌ メッセージ送信失敗:", err);
+                alert("❌ メッセージ送信失敗");
+              });
+          });
+        })
+        .catch((err) => {
+          console.error("❌ WOFF初期化失敗:", err);
+          alert("WOFFの初期化に失敗しました");
+        });
+    });
+  </script>
+</body>
+</html>
