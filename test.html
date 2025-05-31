@@ -70,36 +70,21 @@
 
       // 💬 Flexメッセージ送信
       sendBtn.addEventListener("click", async () => {
-        const flexMessage = {
-          "type": "bubble",
-          "hero": {
-            "type": "image",
-            "url": "https://play-lh.googleusercontent.com/02YgCuVXoYH-wAjaU9Jwlqi75UfljEU4sE1BQrAPVpcHbfSxi86K7YRFfvmJ2ytvqmQ4",
-            "size": "full",
-            "aspectRatio": "20:13",
-            "aspectMode": "cover"
-          },
-          "body": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "text",
-                "text": "WOFFテストメッセージ",
-                "weight": "bold",
-                "size": "lg",
-                "wrap": true
-              },
-              {
-                "type": "text",
-                "text": "Flexメッセージを送信しました！",
-                "size": "md",
-                "wrap": true,
-                "margin": "md"
-              }
-            ]
-          }
-        };
+const flexMessage = {
+  type: "bubble",
+  body: {
+    type: "box",
+    layout: "vertical",
+    contents: [
+      {
+        type: "text",
+        text: "こんにちは！",
+        weight: "bold",
+        size: "lg"
+      }
+    ]
+  }
+};
 
         try {
           const result = await woff.sendFlexMessage({
