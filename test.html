@@ -94,7 +94,7 @@ sendBtn.addEventListener("click", async () => {
 
   try {
     const result = await woff.sendFlexMessage({
-      content: flexMessage
+      flex: flexMessage   // ← ✅ここを必ずflexに
     });
     console.log("✅ メッセージ送信成功:", result);
     alert("✅ メッセージ送信に成功しました！");
@@ -103,6 +103,7 @@ sendBtn.addEventListener("click", async () => {
     alert("❌ メッセージ送信に失敗しました。詳細はvConsoleを確認してください。");
   }
 });
+
     });
   </script>
 </body>
