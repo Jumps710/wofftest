@@ -70,9 +70,10 @@
 
       // 💬 Flexメッセージ送信
       sendBtn.addEventListener("click", async () => {
-const flexMessage = {
-  type: "flex",  // 🔴 ←これが必須！
-  altText: "WOFF Flexメッセージ",
+
+        const flexMessage = {
+  type: "flex",
+  altText: "Sample WOFF Flex Message",  // ←全角を避ける
   contents: {
     type: "bubble",
     body: {
@@ -89,6 +90,7 @@ const flexMessage = {
     }
   }
 };
+
 
 
         try {
