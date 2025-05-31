@@ -71,26 +71,25 @@
       // 💬 Flexメッセージ送信
 sendBtn.addEventListener("click", async () => {
   const flexMessage = {
-                "type": "flex",
-                "altText": "this is a flexible template",
-                "contents": {
-                  "type": "bubble",
-                  "body": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                      {
-                        "type": "text",
-                        "text": "hello"
-                      },
-                      {
-                        "type": "text",
-                        "text": "world"
-                      }
-                    ]
-                  }
-                }
-            }
+    type: "flex",
+    altText: "this is a flexible template",
+    contents: {
+      type: "bubble",
+      body: {
+        type: "box",
+        layout: "vertical",
+        contents: [
+          {
+            type: "text",
+            text: "hello"
+          },
+          {
+            type: "text",
+            text: "world"
+          }
+        ]
+      }
+    }
   };
 
   try {
