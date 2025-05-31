@@ -70,33 +70,11 @@
 
       // 💬 Flexメッセージ送信
 sendBtn.addEventListener("click", async () => {
-  const flexMessage = {
-    type: "flex",
-    altText: "this is a flexible template",
-    contents: {
-      type: "bubble",
-      body: {
-        type: "box",
-        layout: "vertical",
-        contents: [
-          {
-            type: "text",
-            text: "hello"
-          },
-          {
-            type: "text",
-            text: "world"
-          }
-        ]
-      }
-    }
-  };
-
   try {
-    const result = await woff.sendFlexMessage({
-      flex: flexMessage   // ← ✅ここを必ずflexに
+    const result = await woff.sendTextMessage({
+      text: "こんにちは！これはシンプルなテキストメッセージです。"
     });
-    console.log("✅ メッセージ送信成功:", result);
+    console.log("✅ テキストメッセージ送信成功:", result);
     alert("✅ メッセージ送信に成功しました！");
   } catch (err) {
     console.error("❌ メッセージ送信失敗:", err);
