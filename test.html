@@ -48,7 +48,7 @@
       const channelIdSpan = document.getElementById("channelId");
 
       // ✅ WOFF 初期化
-      woff.init({ woffId: "DoyhUDdL_7Ies0Dv4USVHA" })  // ←実際のIDに差し替え
+      woff.init({ woffId: "DoyhUDdL_7Ies0Dv4USVHA" })
         .then(() => {
           console.log("✅ WOFF初期化成功");
         })
@@ -69,26 +69,51 @@
       });
 
       // 💬 Flexメッセージ送信
-sendBtn.addEventListener("click", async () => {
-  try {
-    const result = await woff.sendFlexMessage({
-    flex: {
-            "type": "flex",
-            "altText": "flex",
-            "contents": {
-                    "type": "bubble",
-                    "size": "kilo"
+      sendBtn.addEventListener("click", async () => {
+        try {
+          const result = await woff.sendFlexMessage({
+            flex: {
+              type: "flex",
+              altText: "Sample Flex message",
+              contents: {
+                type: "bubble",
+                hero: {
+                  type: "image",
+                  url: "https://play-lh.googleusercontent.com/02YgCuVXoYH-wAjaU9Jwlqi75UfljEU4sE1BQrAPVpcHbfSxi86K7YRFfvmJ2ytvqmQ4",
+                  size: "full",
+                  aspectRatio: "20:13",
+                  aspectMode: "cover"
+                },
+                body: {
+                  type: "box",
+                  layout: "vertical",
+                  contents: [
+                    {
+                      type: "text",
+                      text: "Flexメッセージ送信成功！",
+                      weight: "bold",
+                      size: "lg",
+                      wrap: true
+                    },
+                    {
+                      type: "text",
+                      text: "このメッセージには画像が含まれています。",
+                      size: "md",
+                      wrap: true,
+                      margin: "md"
+                    }
+                  ]
+                }
+              }
             }
-    }
-})
-    console.log("✅ テキストメッセージ送信成功:", result);
-    alert("✅ メッセージ送信に成功しました！");
-  } catch (err) {
-    console.error("❌ メッセージ送信失敗:", err);
-    alert("❌ メッセージ送信に失敗しました。詳細はvConsoleを確認してください。");
-  }
-});
-
+          });
+          console.log("✅ メッセージ送信成功:", result);
+          alert("✅ メッセージ送信に成功しました！");
+        } catch (err) {
+          console.error("❌ メッセージ送信失敗:", err);
+          alert("❌ メッセージ送信に失敗しました。詳細はvConsoleを確認してください。");
+        }
+      });
     });
   </script>
 </body>
