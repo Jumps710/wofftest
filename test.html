@@ -71,25 +71,43 @@
       // 💬 Flexメッセージ送信
       sendBtn.addEventListener("click", async () => {
 
-        const flexMessage = {
-  type: "flex",
-  altText: "Sample WOFF Flex Message",  // ←全角を避ける
-  contents: {
-    type: "bubble",
-    body: {
-      type: "box",
-      layout: "vertical",
-      contents: [
-        {
-          type: "text",
-          text: "こんにちは！",
-          weight: "bold",
-          size: "lg"
-        }
-      ]
+woff.sendFlexMessage({
+  content: {
+    type: "flex",
+    altText: "Sample Image Notification",
+    contents: {
+      type: "bubble",
+      hero: {
+        type: "image",
+        url: "https://play-lh.googleusercontent.com/02YgCuVXoYH-wAjaU9Jwlqi75UfljEU4sE1BQrAPVpcHbfSxi86K7YRFfvmJ2ytvqmQ4",
+        size: "full",
+        aspectRatio: "20:13",
+        aspectMode: "cover"
+      },
+      body: {
+        type: "box",
+        layout: "vertical",
+        contents: [
+          {
+            type: "text",
+            text: "Flexメッセージ送信成功！",
+            weight: "bold",
+            size: "lg",
+            wrap: true
+          },
+          {
+            type: "text",
+            text: "このメッセージには画像が含まれています。",
+            size: "md",
+            wrap: true,
+            margin: "md"
+          }
+        ]
+      }
     }
   }
-};
+});
+
 
 
 
